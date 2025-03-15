@@ -24,6 +24,7 @@ You'll also need to build [N64Recomp](https://github.com/N64Recomp/N64Recomp) fo
 * First, run `make` (with an optional job count) to build the mod code itself.
 * Next, run the `RecompModTool` utility with `mod.toml` as the first argument and the build dir (`build` in the case of this template) as the second argument.
   * This will produce your mod's `.nrm` file in the build folder.
+  * If you're on MacOS, you may need to specify the path to the `clang` and `ld.lld` binaries using the `CC` and `LD` environment variables, respectively.
 
 ## Updating the Majora's Mask Decompilation Submodule
 
