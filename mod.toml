@@ -22,6 +22,9 @@ Unlock Sun's Song and Saria's Song, as well as added features for Scarecrow's So
 # to prevent it from being cut off due to the limited space.
 short_description = "More ocarina-related improvements."
 
+# Website URL for Thunderstore
+website_url = "https://github.com/magemods/mm-more-song-utils"
+
 # Authors of this mod.
 authors = [ "magemods" ]
 

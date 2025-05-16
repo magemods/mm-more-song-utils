@@ -53,6 +53,11 @@ def update_manifest(path: Path):
         "version_number":  bm.mod_data["manifest"]["version"],
         "description":  bm.mod_data["manifest"]["short_description"],
     })
+    if "website_url" in bm.mod_data["manifest"]:
+        current_manifest.update({
+            "website_url": bm.mod_data["manifest"]["website_url"]
+        })
+
     path.write_text(json.dumps(current_manifest, indent=4))
 
 
