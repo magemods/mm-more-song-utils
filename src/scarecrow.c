@@ -3,12 +3,11 @@
 #include "recomputils.h"
 #include "recompconfig.h"
 #include "mod_config.h"
-
 #include "overlays/actors/ovl_En_Kakasi/z_en_kakasi.c"
 
 bool scarecrowSpawnSongSet;
 
-RECOMP_HOOK("Sram_SaveEndOfCycle") void on_Sram_SaveEndOfCycle(PlayState* play) {
+RECOMP_HOOK("Sram_SaveEndOfCycle") void on_Sram_SaveEndOfCycle() {
     scarecrowSpawnSongSet = gSaveContext.save.saveInfo.scarecrowSpawnSongSet;
 }
 
@@ -31,15 +30,23 @@ RECOMP_HOOK_RETURN("Sram_OpenSave") void after_Sram_OpenSave() {
 }
 
 RECOMP_HOOK("EnKakasi_IdleUnderground") void on_EnKakasi_IdleUnderground(EnKakasi* this, PlayState* play) {
-    if (!get_config_bool("scarecrow_auto")) {
+    if (this->picto.actor.xzDistToPlayer >= this->songSummonDist) {
         return;
     }
-    if (this->picto.actor.xzDistToPlayer < this->songSummonDist && play->msgCtx.ocarinaMode == OCARINA_MODE_ACTIVE) {
-        this->picto.actor.flags &= ~ACTOR_FLAG_LOCK_ON_DISABLED;
-        play->msgCtx.ocarinaMode = OCARINA_MODE_END;
-        this->actionFunc = EnKakasi_SetupRiseOutOfGround;
 
+    if (get_config_bool("scarecrow_auto")) {
+        if (play->msgCtx.ocarinaMode != OCARINA_MODE_ACTIVE) {
+            return;
+        }
         AudioOcarina_SetInstrument(OCARINA_INSTRUMENT_OFF);
         Message_CloseTextbox(play);
+    } else if (get_config_bool("scarecrow_persist")) {
+        if (play->msgCtx.ocarinaMode != OCARINA_MODE_PLAYED_SCARECROW_SPAWN) {
+            return;
+        }
     }
+
+    this->picto.actor.flags &= ~ACTOR_FLAG_LOCK_ON_DISABLED;
+    play->msgCtx.ocarinaMode = OCARINA_MODE_END;
+    this->actionFunc = EnKakasi_SetupRiseOutOfGround;
 }
