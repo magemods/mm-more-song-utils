@@ -2,11 +2,11 @@
 #include "global.h"
 #include "recomputils.h"
 #include "recompconfig.h"
-#include "mod_config.h"
+#include "magemods_globals.h"
 
-u32 questItems = 0;
+static u32 questItems = 0;
 
-void enable_songs() {
+static void enable_songs() {
     questItems = gSaveContext.save.saveInfo.inventory.questItems;
 
     if (get_config_bool("extra_song_suns")) {
@@ -17,7 +17,7 @@ void enable_songs() {
     }
 }
 
-void disable_songs() {
+static void disable_songs() {
     if (questItems == 0) {
         return;
     }
@@ -31,7 +31,7 @@ void disable_songs() {
     questItems = 0;
 }
 
-RECOMP_HOOK("Message_DisplayOcarinaStaffImpl") void on_DisplayOcarinaStaffImpl(PlayState* play, u16 ocarinaAction) {
+RECOMP_HOOK("Message_DisplayOcarinaStaffImpl") void on_DisplayOcarinaStaffImpl() {
     enable_songs();
 }
 RECOMP_HOOK_RETURN("Message_HandleOcarina") void after_HandleOcarina() {

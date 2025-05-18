@@ -27,4 +27,4 @@ Persist your Scarecrow's Song across Song of Time resets. You will still have th
 
 [![<](https://github.com/magemods/mm-more-song-utils/blob/main/thunderstore_package/images/danielryb-Song_Utilities-1.0.2.png?raw=true) Song Utilities by danielryb](https://thunderstore.io/c/zelda-64-recompiled/p/danielryb/Song_Utilities/)
 
-[![<](https://github.com/magemods/mm-more-song-utils/blob/main/thunderstore_package/images/danielryb-Better_Song_of_Double_Time-1.0.0.png?raw=true) Better Song of Double Time](https://thunderstore.io/c/zelda-64-recompiled/p/danielryb/Better_Song_of_Double_Time/)
+[![<](https://github.com/magemods/mm-more-song-utils/blob/main/thunderstore_package/images/danielryb-Better_Song_of_Double_Time-1.0.0.png?raw=true) Better Song of Double Time by danielryb](https://thunderstore.io/c/zelda-64-recompiled/p/danielryb/Better_Song_of_Double_Time/)
