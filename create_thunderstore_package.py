@@ -13,8 +13,11 @@ def slugify(text: str) -> str:
     return text
 
 
-def strip_newlines(text: str) -> str:
-    return re.sub(r'[\n]+', ' ', text).strip()
+def get_description() -> str:
+    description = re.sub(r'[\n]+', ' ', bm.mod_data["manifest"]["description"]).strip()
+    if len(description) > 0 and len(description) <= 256:
+        return description
+    return bm.mod_data["manifest"]["short_description"]
 
 
 def get_website_url() -> str:
@@ -46,7 +49,7 @@ def get_package_manifest() ->dict[str, str]:
         "name":  slugify(bm.mod_data["manifest"]["display_name"]),
         "version_number":  bm.mod_data["manifest"]["version"],
         "website_url":  get_website_url(),
-        "description":  strip_newlines(bm.mod_data["manifest"]["description"]),
+        "description":  get_description(),
         "dependencies":  []
     }
 
