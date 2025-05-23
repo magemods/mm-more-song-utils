@@ -9,18 +9,18 @@ extern void EnKakasi_SetupRiseOutOfGround(EnKakasi* this, PlayState* play);
 
 static bool scarecrowSpawnSongSet;
 
-RECOMP_HOOK("Sram_SaveEndOfCycle") void on_Sram_SaveEndOfCycle() {
+RECOMP_HOOK("Sram_SaveEndOfCycle") void on_Sram_SaveEndOfCycle_scarecrow() {
     scarecrowSpawnSongSet = gSaveContext.save.saveInfo.scarecrowSpawnSongSet;
 }
 
-RECOMP_HOOK_RETURN("Sram_SaveEndOfCycle") void after_Sram_SaveEndOfCycle() {
+RECOMP_HOOK_RETURN("Sram_SaveEndOfCycle") void after_Sram_SaveEndOfCycle_scarecrow() {
     if (!get_config_bool("scarecrow_persist")) {
         return;
     }
     gSaveContext.save.saveInfo.scarecrowSpawnSongSet |= scarecrowSpawnSongSet;
 }
 
-RECOMP_HOOK_RETURN("Sram_OpenSave") void after_Sram_OpenSave() {
+RECOMP_HOOK_RETURN("Sram_OpenSave") void after_Sram_OpenSave_scarecrow() {
     if (!get_config_bool("scarecrow_persist")) {
         return;
     }

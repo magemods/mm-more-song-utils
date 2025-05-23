@@ -91,3 +91,11 @@ description = "Persist your Scarecrow's Song across Song of Time resets. You wil
 type = "Enum"
 options = [ "Yes", "No" ]
 default = "Yes"
+
+[[manifest.config_options]]
+id = "time_speed_persist"
+name = "Persist Inverted Song of Time"
+description = "Persist slowed down time across Song of Time resets."
+type = "Enum"
+options = [ "Yes", "No" ]
+default = "Yes"
