@@ -1,6 +1,6 @@
 {
     "name": "More_Song_Utils",
-    "version_number": "1.1.0",
+    "version_number": "1.1.1",
     "website_url": "https://github.com/magemods/mm-more-song-utils",
     "description": "Now you can play Sun's Song and Saria's Song. Plus enable Scarecrow's Song to persist across cycles and enable auto-spawning.",
     "dependencies": []

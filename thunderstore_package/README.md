@@ -1,6 +1,6 @@
 # More Song Utilities
 
-This mod provides a few more ocarina-related quality of life features. Make sure to also check out the original (https://thunderstore.io/c/zelda-64-recompiled/p/danielryb/Song_Utilities/)[Song Utilities] mod by [https://thunderstore.io/c/zelda-64-recompiled/p/danielryb/](danielryb).
+This mod provides a few more ocarina-related quality of life features. Make sure to also check out the original [Song Utilities](https://thunderstore.io/c/zelda-64-recompiled/p/danielryb/Song_Utilities/) mod by [danielryb](https://thunderstore.io/c/zelda-64-recompiled/p/danielryb/).
 
 ## Features
 ### Enable Sun's Song
