@@ -77,6 +77,14 @@ options = [ "Yes", "No" ]
 default = "Yes"
 
 [[manifest.config_options]]
+id = "extra_song_sarias_song_id"
+name = ""
+description = ""
+type = "Enum"
+options = [ "Play Saria's Song", "Play Final Hours" ]
+default = "Play Saria's Song"
+
+[[manifest.config_options]]
 id = "scarecrow_auto"
 name = "Auto Spawn Scarecrow"
 description = "Automatically spawn Pierre as soon as you start playing the ocarina."

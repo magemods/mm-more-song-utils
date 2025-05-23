@@ -4,31 +4,46 @@
 #include "recompconfig.h"
 #include "magemods_globals.h"
 
-static u32 questItems = 0;
+extern s16 sOcarinaSongFanfares[];
+
+static u32 origQuestItems = 0;
+
+enum config_options_sarias {
+    CONFIG_PLAY_SARIAS,
+    CONFIG_PLAY_FINAL_HOURS,
+};
 
 static void enable_songs() {
-    questItems = gSaveContext.save.saveInfo.inventory.questItems;
+    origQuestItems = gSaveContext.save.saveInfo.inventory.questItems;
 
     if (get_config_bool("extra_song_suns")) {
         SET_QUEST_ITEM(QUEST_SONG_SONATA + OCARINA_SONG_SUNS);
     }
     if (get_config_bool("extra_song_sarias")) {
         SET_QUEST_ITEM(QUEST_SONG_SONATA + OCARINA_SONG_SARIAS);
+
+        if (recomp_get_config_u32("extra_song_sarias_song_id") == CONFIG_PLAY_SARIAS) {
+            sOcarinaSongFanfares[5] = NA_BGM_SARIAS_SONG;
+        } else {
+            sOcarinaSongFanfares[5] = NA_BGM_FINAL_HOURS;
+        }
     }
 }
 
 static void disable_songs() {
-    if (questItems == 0) {
+    if (origQuestItems == 0) {
         return;
     }
-    if ((questItems & gBitFlags[QUEST_SONG_SONATA + OCARINA_SONG_SUNS]) == 0) {
+
+    if ((origQuestItems & gBitFlags[QUEST_SONG_SONATA + OCARINA_SONG_SUNS]) == 0) {
         REMOVE_QUEST_ITEM(QUEST_SONG_SONATA + OCARINA_SONG_SUNS);
     }
-    if ((questItems & gBitFlags[QUEST_SONG_SONATA + OCARINA_SONG_SARIAS]) == 0) {
+
+    if ((origQuestItems & gBitFlags[QUEST_SONG_SONATA + OCARINA_SONG_SARIAS]) == 0) {
         REMOVE_QUEST_ITEM(QUEST_SONG_SONATA + OCARINA_SONG_SARIAS);
     }
 
-    questItems = 0;
+    origQuestItems = 0;
 }
 
 RECOMP_HOOK("Message_DisplayOcarinaStaffImpl") void on_DisplayOcarinaStaffImpl() {
